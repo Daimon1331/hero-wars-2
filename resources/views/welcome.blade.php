@@ -18,38 +18,34 @@
 <body>
 <div id="app">
 <div id="main">
-    <div id="light-dragon">
-        <svg width="1371" height="900" viewBox="0 0 1371 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_f_404:6)">
-                <path d="M333.861 -328.471L1270.2 643.698L397.958 806.963L59.0289 -109.928L333.861 -328.471Z" fill="#FFD84E" fill-opacity="0.2"/>
-            </g>
-            <defs>
-                <filter id="filter0_f_404:6" x="-40.9712" y="-428.471" width="1411.17" height="1335.43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                    <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_404:6"/>
-                </filter>
-            </defs>
-        </svg>
-
+    <div id="container-chest">
+        <div id="box-chest">
+            <div class="box-text">
+                <p class="p-open">Open</p>
+                <p class="p-open">Me!</p>
+            </div>
+            <div id="chest-glow"></div>
+            <div id="chest"></div>
+            <div id="chest-stars"></div>
+        </div>
     </div>
     <div id="dragon">
-
+        <img id="back-dragon" src="assets/dragon_back.png" alt="hero-wars">
     </div>
     <div id="character">
         <div class="light-character">
-            <svg width="492" height="882" viewBox="0 0 492 882" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_f_357:313)">
-                    <path d="M313 -127H185L100 782H392L313 -127Z" fill="white" fill-opacity="0.3"/>
-                </g>
-                <defs>
-                    <filter id="filter0_f_357:313" x="0" y="-227" width="492" height="1109" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                        <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_357:313"/>
-                    </filter>
-                </defs>
-            </svg>
+{{--            <svg width="492" height="882" viewBox="0 0 492 882" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                <g filter="url(#filter0_f_357:313)">--}}
+{{--                    <path d="M313 -127H185L100 782H392L313 -127Z" fill="white" fill-opacity="0.3"/>--}}
+{{--                </g>--}}
+{{--                <defs>--}}
+{{--                    <filter id="filter0_f_357:313" x="0" y="-227" width="492" height="1109" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">--}}
+{{--                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>--}}
+{{--                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>--}}
+{{--                        <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_357:313"/>--}}
+{{--                    </filter>--}}
+{{--                </defs>--}}
+{{--            </svg>--}}
         </div>
         <div class="txt-character">
             <p class="h2">Your 1st hero
@@ -57,7 +53,7 @@
             <h1 class="h1">fight!</h1>
         </div>
     </div>
-        <div id="container-form">
+    <div id="container-form">
             <div class="logo">
                 <img src="assets/logo.gif" alt="hero-wars">
             </div>
@@ -135,11 +131,12 @@
                            name="mail">
                     <p>Field is required.</p>
                     <p class="sign-up">Couldn’t find an account associated with this email. Want to
-                        <span class="close-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#modalregister">sing up</span>?</p>
+{{--                        <span class="close-modal">sing up</span>?</p>--}}
                 </div>
                 <div class="input-valid">
                     <input class="entryfield password-type password" type="password" placeholder="Password"
                            name="password">
+                    <p>Use 6-40 symbols, except spaces, <, >, ', "</p>
                     <p>Your password is incorrect.</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.185 18.899L13.764 16.4765C12.8278 16.8112 11.8157 16.8732 10.8456 16.6553C9.87554 16.4373 8.98729 15.9483 8.28423 15.2453C7.58117 14.5422 7.09221 13.654 6.87424 12.6839C6.65628 11.7138 6.71827 10.7017 7.053 9.76551L3.963 6.67551C1.407 8.94801 0 11.531 0 11.531C0 11.531 4.5 19.781 12 19.781C13.4406 19.776 14.8649 19.4758 16.185 18.899ZM7.815 4.16301C9.13508 3.58614 10.5594 3.28597 12 3.28101C19.5 3.28101 24 11.531 24 11.531C24 11.531 22.5915 14.1125 20.0385 16.388L16.9455 13.295C17.2802 12.3588 17.3422 11.3467 17.1243 10.3766C16.9063 9.40655 16.4173 8.51829 15.7143 7.81524C15.0112 7.11218 14.123 6.62322 13.1529 6.40525C12.1828 6.18728 11.1707 6.24927 10.2345 6.58401L7.815 4.16451V4.16301Z" fill="#FFE5B5" fill-opacity="0.2"/>
@@ -209,8 +206,7 @@
 
 
 </div>
-<script src="/lottie.js"></script>
 
-<script defer src="/js/app.js"></script>
+<script src="/js/app.js"></script>
 </body>
 </html>

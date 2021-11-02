@@ -1,30 +1,175 @@
 
 require('./bootstrap');
-require('./lottie');
-// require('./bodymovin');
+
+
+import bodymovin from 'lottie-web';
 
 
 
 
-
+var state = 'step1';
 
 var animation_dragon = bodymovin.loadAnimation({
     container: document.getElementById('dragon'),
     path: '' + window.ASSET_PATH + '/dragon.json',
     renderer: 'svg',
     loop: true,
+    autoplay: false,
+});
+
+var animation_chest = bodymovin.loadAnimation({
+    container: document.getElementById('chest'),
+    path: '' + window.ASSET_PATH + '/chest.json',
+    renderer: 'svg',
+    loop: 0,
+    autoplay: false,
+});
+
+var animation_stars = bodymovin.loadAnimation({
+    container: document.getElementById('chest-stars'),
+    path: '' + window.ASSET_PATH + '/chest_stars.json',
+    renderer: 'svg',
+    loop: 0,
+    autoplay: false,
+});
+
+
+
+var chest = document.getElementById('chest');
+var chest_stars = document.getElementById('chest-stars');
+
+chest_stars.addEventListener('click', (animationplay));
+function animationplay (){
+    if (state === 'end' ) {
+    } else {
+        if(state === 'step1') {
+            animation_chest.playSegments([0, 16], true);
+            animation_stars.playSegments([0, 16], true);
+            state = 'step2';
+        } else {
+            if(state === 'step2') {
+                animation_chest.playSegments([16, 30], true);
+                animation_stars.playSegments([16, 30], true);
+                state = 'step3';
+            } else {
+                if(state === 'step3') {
+                    animation_chest.playSegments([30, 58], true);
+                    animation_stars.playSegments([30, 58], true);
+                    state = 'end';
+                    if (document.documentElement.clientWidth < 992) {
+                        animation_chest.onComplete = function () {
+                            $('#dragon svg').css('display', 'block');
+                            $('#back-dragon').css('display', 'none');
+                            $('#container-chest').css('display', 'none');
+                            $('#character').css('display', 'block').addClass("anim-character");
+                            setTimeout(function () {
+                                $('#character').removeClass("anim-character");
+                                $('#container-form').css('display', 'block');
+                            }, 3000);
+                        }
+                    } else {
+                        animation_chest.onComplete = function () {
+                            $('#dragon svg').css('display', 'block');
+                            $('#back-dragon').css('display', 'none');
+                            $('#container-chest').css('display', 'none');
+                            $('#character').css('display', 'block');
+                            $('#container-form').css('display', 'block');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+setTimeout(function () {
+    if(state === 'step1') {
+        animation_chest.playSegments([0, 58], true);
+        animation_stars.playSegments([0, 58], true);
+        state = 'end';
+        if (document.documentElement.clientWidth < 992) {
+            animation_chest.onComplete = function () {
+                $('#dragon svg').css('display', 'block');
+                $('#back-dragon').css('display', 'none');
+                $('#container-chest').css('display', 'none');
+                $('#character').css('display', 'block').addClass("anim-character");
+                setTimeout(function () {
+                    $('#character').removeClass("anim-character");
+                    $('#container-form').css('display', 'block');
+                }, 3000);
+            }
+        } else {
+            animation_chest.onComplete = function () {
+                $('#dragon svg').css('display', 'block');
+                $('#back-dragon').css('display', 'none');
+                $('#container-chest').css('display', 'none');
+                $('#character').css('display', 'block');
+                $('#container-form').css('display', 'block');
+            }
+        }
+    } else {
+        if(state === 'step2') {
+            animation_chest.playSegments([16, 58], true);
+            animation_stars.playSegments([16, 58], true)
+            state = 'end';
+            if (document.documentElement.clientWidth < 992) {
+                animation_chest.onComplete = function () {
+                    $('#dragon svg').css('display', 'block');
+                    $('#back-dragon').css('display', 'none');
+                    $('#container-chest').css('display', 'none');
+                    $('#character').css('display', 'block').addClass("anim-character");
+                    setTimeout(function () {
+                        $('#character').removeClass("anim-character");
+                        $('#container-form').css('display', 'block');
+                    }, 3000);
+                }
+            } else {
+                animation_chest.onComplete = function () {
+                    $('#dragon svg').css('display', 'block');
+                    $('#back-dragon').css('display', 'none');
+                    $('#container-chest').css('display', 'none');
+                    $('#character').css('display', 'block');
+                    $('#container-form').css('display', 'block');
+                }
+            }
+        } else {
+            if(state === 'step3') {
+                animation_chest.playSegments([30, 58], true);
+                animation_stars.playSegments([30, 58], true);
+                state = 'end';
+                if (document.documentElement.clientWidth < 992) {
+                    animation_chest.onComplete = function () {
+                        $('#dragon svg').css('display', 'block');
+                        $('#back-dragon').css('display', 'none');
+                        $('#container-chest').css('display', 'none');
+                        $('#character').css('display', 'block').addClass("anim-character");
+                        setTimeout(function () {
+                            $('#character').removeClass("anim-character");
+                            $('#container-form').css('display', 'block');
+                        }, 3000);
+                    }
+                } else {
+                    animation_chest.onComplete = function () {
+                        $('#dragon svg').css('display', 'block');
+                        $('#back-dragon').css('display', 'none');
+                        $('#container-chest').css('display', 'none');
+                        $('#character').css('display', 'block');
+                        $('#container-form').css('display', 'block');
+                    }
+                }
+            }
+        }
+    }
+}, 5000);
+
+
+var animation_character = bodymovin.loadAnimation({
+    container: document.getElementById('character'),
+    path: '' + window.ASSET_PATH + '/garen.json',
+    renderer: 'svg',
+    loop: true,
     autoplay: true,
-})
-
-
-// var animation_character = bodymovin.loadAnimation({
-//     container: document.getElementById('character'),
-//     path: '' + window.ASSET_PATH + '/garen.json',
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-// })
-
+});
 
 
 var consent = document.getElementsByClassName('consent');
@@ -55,21 +200,15 @@ $(".password-button").click(function () {
 $("#register .hero-button").click(function () {
     var form = this.closest('form');
     var mail = form.querySelector('.mail');
-    console.log(mail.value);
     if (mail.value.match(/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/)) {
-        console.log(mail.value);
         $(mail).addClass("valid");
         $(mail).removeClass("invalid");
         var password = form.querySelector('.password');
-        console.log(password.value);
         if (password.value.match(/^[^\s<>'"]{6,40}$/)) {
-            console.log(password.value);
             $(password).addClass("valid");
             $(password).removeClass("invalid");
             var password_confirm = form.querySelector('.password-confirm');
-            console.log(password_confirm.value);
             if (password_confirm.value === password.value) {
-                console.log(password_confirm.value);
                 $(password_confirm).addClass("valid");
                 $(password_confirm).removeClass("invalid");
                 let formData = new FormData(form);
@@ -77,13 +216,12 @@ $("#register .hero-button").click(function () {
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: '',
+                    url: '/register',
                     data: formData,
                     type: 'POST',
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        console.log(data)
                     },
                     error: function (data) {
                     }
@@ -114,50 +252,50 @@ $("#login .hero-button").click(function () {
         // if (mail.value.match(/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/)) {
         $(mail).addClass("valid");
         $(mail).removeClass("invalid");
-        // if (password.value === "") {
+        if (password.value === "") {
+            $(password).addClass("invalid");
+            $(password).removeClass("valid");
+            } else {
+            //     if (password.value.match(/^[^\s<>'"]{6,40}$/)) {
+                    $(password).addClass("valid");
+                    $(password).removeClass("invalid");
+            let formData = new FormData(form);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/login',
+                data: formData,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data == '{"errorCode":3001,"message":"User not found"}') {
+                        $(mail).addClass("invalid-response");
+                        $(mail).removeClass("valid");
+                    } else {
+
+                    }
+                    if (data == '{"errorCode":3002,"message":"Incorrect password"}') {
+                        $(password).addClass("invalid-response");
+                        $(password).removeClass("valid");
+                    } else {
+
+                    }
+                },
+                error: function (data) {
+                }
+            });
+            return false;
+        // } else {
         //     $(password).addClass("invalid");
         //     $(password).removeClass("valid");
-        // } else {
-        //     if (password.value.match(/^[^\s<>'"]{6,40}$/)) {
-        //         $(password).addClass("valid");
-        //         $(password).removeClass("invalid");
-        let formData = new FormData(form);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '',
-            data: formData,
-            type: 'POST',
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if (data == '{"errorCode":3001,"message":"User not found"}') {
-                    $(mail).addClass("invalid");
-                    $(mail).removeClass("valid");
-                } else {
-
-                }
-                if (data == '{"errorCode":3002,"message":"Incorrect password"}') {
-                    $(password).addClass("invalid");
-                    $(password).removeClass("valid");
-                } else {
-
-                }
-            },
-            error: function (data) {
-            }
-        });
-        return false;
-        //     } else {
-        //         $(password).addClass("invalid");
-        //         $(password).removeClass("valid");
-        //     }
+        // }
         // }
         // } else {
         //     $(mail).addClass("invalid");
         //     $(mail).removeClass("valid");
-        // }
+        }
     }
 
 });
@@ -190,6 +328,57 @@ $("#reset .hero-button").click(function () {
     }
 });
 
+$("#updatepassword .green-button").click(function () {
+    var form = this.closest('form')
+    var passwordnew = form.querySelector('.password-new')
+    var passwordconfirm = form.querySelector('.password-confirm')
+    if (passwordnew.value === "") {
+        $(passwordnew).addClass("invalid");
+        $(passwordnew).removeClass("valid");
+    } else {
+        if (passwordnew.value.match(/^[^\s<>'"]{6,40}$/)) {
+            $(passwordnew).addClass("valid");
+            $(passwordnew).removeClass("invalid invalid-no-caption");
+            if (passwordconfirm.value === passwordnew.value) {
+                $(passwordconfirm).addClass("valid");
+                let formData = new FormData(form);
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/password/email',
+                    data: formData,
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+
+                    },
+                    error: function (data) {
+
+                    }
+                });
+                return false;
+            } else {
+                $(passwordnew).addClass("invalid-no-caption");
+                $(passwordnew).removeClass("valid");
+                $(passwordconfirm).addClass("invalid");
+                $(passwordconfirm).removeClass("valid");
+            }
+        } else {
+            $(passwordnew).addClass("invalid");
+            $(passwordnew).removeClass("valid");
+        }
+    }
+});
+
+$("#open-login, .open-register, .forgot-password").click(function () {
+    var removeclass = $(".entryfield")
+    for (var i = 0; i < removeclass.length; i++) {
+        $(removeclass[i]).removeClass("valid invalid invalid-response invalid-no-caption");
+    }
+});
+
 $('#open-login').click(function () {
     $('#register').css('display', 'none');
     $('#login').css('display', 'block');
@@ -213,3 +402,6 @@ $(document).ready(function() {
         $('#updatepassword').css('display', 'block');
     }
 });
+
+
+
