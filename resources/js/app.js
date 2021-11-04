@@ -1,21 +1,13 @@
-
 require('./bootstrap');
-
-
 import bodymovin from 'lottie-web';
 
+var content = document.getElementById('app');
+
+// content.insertAdjacentHTML('beforeend', '');
 
 
 
 var state = 'step1';
-
-var animation_dragon = bodymovin.loadAnimation({
-    container: document.getElementById('dragon'),
-    path: '' + window.ASSET_PATH + '/dragon.json',
-    renderer: 'svg',
-    loop: true,
-    autoplay: false,
-});
 
 var animation_chest = bodymovin.loadAnimation({
     container: document.getElementById('chest'),
@@ -25,41 +17,52 @@ var animation_chest = bodymovin.loadAnimation({
     autoplay: false,
 });
 
-var animation_stars = bodymovin.loadAnimation({
-    container: document.getElementById('chest-stars'),
-    path: '' + window.ASSET_PATH + '/chest_stars.json',
-    renderer: 'svg',
-    loop: 0,
-    autoplay: false,
-});
+setTimeout(function () {
+    $('#chest img').css('opacity', '0').css('visibility', 'hidden').css('filter', 'none');
+    $('#container-txt').css('display', 'block');
+}, 500);
 
 
 
+// var animation_stars = bodymovin.loadAnimation({
+//     container: document.getElementById('chest-stars'),
+//     path: '' + window.ASSET_PATH + '/chest_stars.json',
+//     renderer: 'svg',
+//     loop: 0,
+//     autoplay: false,
+// });
+
+
+var video_back = document.getElementById('video_back');
 var chest = document.getElementById('chest');
 var chest_stars = document.getElementById('chest-stars');
 
+chest.addEventListener('click', (animationplay));
 chest_stars.addEventListener('click', (animationplay));
 function animationplay (){
     if (state === 'end' ) {
     } else {
         if(state === 'step1') {
             animation_chest.playSegments([0, 16], true);
-            animation_stars.playSegments([0, 16], true);
+            // animation_stars.playSegments([0, 16], true);
+            $('#chest-stars').css('display', 'block');
             state = 'step2';
         } else {
             if(state === 'step2') {
                 animation_chest.playSegments([16, 30], true);
-                animation_stars.playSegments([16, 30], true);
+                // animation_stars.playSegments([16, 30], true);
                 state = 'step3';
             } else {
                 if(state === 'step3') {
                     animation_chest.playSegments([30, 58], true);
-                    animation_stars.playSegments([30, 58], true);
+                    // animation_stars.playSegments([30, 58], true);
                     state = 'end';
                     if (document.documentElement.clientWidth < 992) {
                         animation_chest.onComplete = function () {
-                            $('#dragon svg').css('display', 'block');
+                            $('#dragon video').css('display', 'block');
+                            video_back.play();
                             $('#back-dragon').css('display', 'none');
+                            $('#container-txt').css('display', 'none');
                             $('#container-chest').css('display', 'none');
                             $('#character').css('display', 'block').addClass("anim-character");
                             setTimeout(function () {
@@ -69,8 +72,10 @@ function animationplay (){
                         }
                     } else {
                         animation_chest.onComplete = function () {
-                            $('#dragon svg').css('display', 'block');
+                            $('#dragon video').css('display', 'block');
+                            video_back.play();
                             $('#back-dragon').css('display', 'none');
+                            $('#container-txt').css('display', 'none');
                             $('#container-chest').css('display', 'none');
                             $('#character').css('display', 'block');
                             $('#container-form').css('display', 'block');
@@ -85,11 +90,14 @@ function animationplay (){
 setTimeout(function () {
     if(state === 'step1') {
         animation_chest.playSegments([0, 58], true);
-        animation_stars.playSegments([0, 58], true);
+        // animation_stars.playSegments([0, 58], true);
+        $('#chest-stars').css('display', 'block');
         state = 'end';
         if (document.documentElement.clientWidth < 992) {
             animation_chest.onComplete = function () {
-                $('#dragon svg').css('display', 'block');
+                $('#dragon video').css('display', 'block');
+                video_back.play();
+                $('#container-txt').css('display', 'none');
                 $('#back-dragon').css('display', 'none');
                 $('#container-chest').css('display', 'none');
                 $('#character').css('display', 'block').addClass("anim-character");
@@ -100,9 +108,11 @@ setTimeout(function () {
             }
         } else {
             animation_chest.onComplete = function () {
-                $('#dragon svg').css('display', 'block');
+                $('#dragon video').css('display', 'block');
+                video_back.play();
                 $('#back-dragon').css('display', 'none');
                 $('#container-chest').css('display', 'none');
+                $('#container-txt').css('display', 'none');
                 $('#character').css('display', 'block');
                 $('#container-form').css('display', 'block');
             }
@@ -110,12 +120,15 @@ setTimeout(function () {
     } else {
         if(state === 'step2') {
             animation_chest.playSegments([16, 58], true);
-            animation_stars.playSegments([16, 58], true)
+            // animation_stars.playSegments([16, 58], true)
+            $('#chest-stars').css('display', 'block');
             state = 'end';
             if (document.documentElement.clientWidth < 992) {
                 animation_chest.onComplete = function () {
-                    $('#dragon svg').css('display', 'block');
+                    $('#dragon video').css('display', 'block');
+                    video_back.play();
                     $('#back-dragon').css('display', 'none');
+                    $('#container-txt').css('display', 'none');
                     $('#container-chest').css('display', 'none');
                     $('#character').css('display', 'block').addClass("anim-character");
                     setTimeout(function () {
@@ -125,8 +138,10 @@ setTimeout(function () {
                 }
             } else {
                 animation_chest.onComplete = function () {
-                    $('#dragon svg').css('display', 'block');
+                    $('#dragon video').css('display', 'block');
+                    video_back.play();
                     $('#back-dragon').css('display', 'none');
+                    $('#container-txt').css('display', 'none');
                     $('#container-chest').css('display', 'none');
                     $('#character').css('display', 'block');
                     $('#container-form').css('display', 'block');
@@ -135,12 +150,15 @@ setTimeout(function () {
         } else {
             if(state === 'step3') {
                 animation_chest.playSegments([30, 58], true);
-                animation_stars.playSegments([30, 58], true);
+                // animation_stars.playSegments([30, 58], true);
+                $('#chest-stars').css('display', 'block');
                 state = 'end';
                 if (document.documentElement.clientWidth < 992) {
                     animation_chest.onComplete = function () {
-                        $('#dragon svg').css('display', 'block');
+                        $('#dragon video').css('display', 'block');
+                        video_back.play();
                         $('#back-dragon').css('display', 'none');
+                        $('#container-txt').css('display', 'none');
                         $('#container-chest').css('display', 'none');
                         $('#character').css('display', 'block').addClass("anim-character");
                         setTimeout(function () {
@@ -150,8 +168,10 @@ setTimeout(function () {
                     }
                 } else {
                     animation_chest.onComplete = function () {
-                        $('#dragon svg').css('display', 'block');
+                        $('#dragon video').css('display', 'block');
+                        video_back.play();
                         $('#back-dragon').css('display', 'none');
+                        $('#container-txt').css('display', 'none');
                         $('#container-chest').css('display', 'none');
                         $('#character').css('display', 'block');
                         $('#container-form').css('display', 'block');
@@ -160,7 +180,7 @@ setTimeout(function () {
             }
         }
     }
-}, 5000);
+}, 4000);
 
 
 var animation_character = bodymovin.loadAnimation({
@@ -170,6 +190,15 @@ var animation_character = bodymovin.loadAnimation({
     loop: true,
     autoplay: true,
 });
+
+// var animation_dragon = bodymovin.loadAnimation({
+//     container: document.getElementById('dragon'),
+//     path: '' + window.ASSET_PATH + '/dragon.json',
+//     renderer: 'svg',
+//     loop: true,
+//     autoplay: true,
+// });
+
 
 
 var consent = document.getElementsByClassName('consent');

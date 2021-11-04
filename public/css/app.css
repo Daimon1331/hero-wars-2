@@ -11448,6 +11448,12 @@ button {
     width: 218px;
   }
 }
+.input-valid .entryfield:-webkit-autofill {
+  -webkit-background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  color: #915D24 !important;
+  -webkit-text-fill-color: #915D24 !important;
+}
 .input-valid .entryfield::-moz-placeholder {
   font-family: "RobotoCondensed-Bold", sans-serif;
   font-size: 14px;
@@ -11716,7 +11722,7 @@ button {
   left: 90px;
   min-height: 90vh;
   height: 77vh;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   filter: blur(100px);
   width: 50%;
 }
@@ -11810,19 +11816,9 @@ button {
 #dragon {
   position: absolute;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  min-width: 160vh;
-}
-@media screen and (max-width: 992px) {
-  #dragon {
-    margin-left: -100px;
-  }
-}
-@media screen and (max-width: 550px) {
-  #dragon {
-    min-width: 230vh;
-  }
 }
 #dragon svg {
   display: none;
@@ -11832,6 +11828,20 @@ button {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+#dragon video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+}
+@media screen and (max-width: 992px) {
+  #dragon video {
+    -o-object-position: -285px;
+       object-position: -285px;
+  }
 }
 
 #light-dragon {
@@ -11859,10 +11869,10 @@ button {
   position: relative;
   top: 0;
   left: 0;
-  -webkit-animation: square 0.8s linear infinite alternate;
-          animation: square 0.8s linear infinite alternate;
+  -webkit-animation: chest 0.8s linear infinite alternate;
+          animation: chest 0.8s linear infinite alternate;
 }
-@-webkit-keyframes square {
+@-webkit-keyframes chest {
   0% {
     transform: translate(-5px, 5px) rotate(-1deg);
   }
@@ -11879,7 +11889,7 @@ button {
     transform: translate(5px, -5px) rotate(-1deg);
   }
 }
-@keyframes square {
+@keyframes chest {
   0% {
     transform: translate(-5px, 5px) rotate(-1deg);
   }
@@ -11925,6 +11935,26 @@ button {
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
+#container-chest #box-chest #chest img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  max-width: none;
+  transition: 0.5s;
+  opacity: 1;
+  filter: drop-shadow(0px 0px 80px #fbc635);
+  margin-top: -37px;
+  z-index: 1;
+}
+@media screen and (max-width: 700px) {
+  #container-chest #box-chest #chest img {
+    width: 587px;
+    height: 336px;
+    margin-top: -17px;
+  }
+}
 #container-chest #box-chest #chest svg {
   filter: drop-shadow(0px 0px 80px #fbc635);
 }
@@ -11941,9 +11971,10 @@ button {
   cursor: pointer;
 }
 #container-chest #box-chest #chest-stars {
-  margin-top: -130px;
+  display: none;
+  margin-top: -40px;
   position: absolute;
-  width: 540px;
+  width: 970px;
   height: auto;
   top: 50%;
   left: 50%;
@@ -11953,7 +11984,7 @@ button {
 @media screen and (max-width: 700px) {
   #container-chest #box-chest #chest-stars {
     width: 360px;
-    margin-top: -100px;
+    margin-top: -20px;
     height: auto;
   }
 }
@@ -11992,5 +12023,34 @@ button {
   .anim-character {
     width: 300px !important;
     top: 10vh;
+  }
+}
+
+#container-txt {
+  display: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  z-index: 7;
+}
+#container-txt .box-text {
+  position: relative;
+  top: -260px;
+  left: -280px;
+}
+@media screen and (max-width: 700px) {
+  #container-txt .box-text {
+    top: -130px;
+    left: -150px;
+  }
+  #container-txt .box-text p:last-child {
+    margin-left: -10px;
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 700px) {
+  #container-txt .box-text p:last-child {
+    margin-left: -6px;
   }
 }

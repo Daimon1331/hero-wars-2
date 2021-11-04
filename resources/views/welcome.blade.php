@@ -18,34 +18,46 @@
 <body>
 <div id="app">
 <div id="main">
+    <div id="light-dragon">
+        <svg width="1371" height="900" viewBox="0 0 1371 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_f_404:6)">
+                <path d="M333.861 -328.471L1270.2 643.698L397.958 806.963L59.0289 -109.928L333.861 -328.471Z" fill="#FFD84E" fill-opacity="0.2"/>
+            </g>
+            <defs>
+                <filter id="filter0_f_404:6" x="-40.9712" y="-428.471" width="1411.17" height="1335.43" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                    <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_404:6"/>
+                </filter>
+            </defs>
+        </svg>
+
+    </div>
+    <div id="container-txt">
+        <div class="box-text">
+            <p class="p-open">Open</p>
+            <p class="p-open">Me!</p>
+        </div>
+    </div>
     <div id="container-chest">
         <div id="box-chest">
-            <div class="box-text">
-                <p class="p-open">Open</p>
-                <p class="p-open">Me!</p>
-            </div>
             <div id="chest-glow"></div>
-            <div id="chest"></div>
-            <div id="chest-stars"></div>
+            <div id="chest">
+                <img src="assets/chest.png" alt="hero-wars">
+            </div>
+            <div id="chest-stars">
+                <img src="assets/stars.png" alt="hero-wars">
+            </div>
         </div>
     </div>
     <div id="dragon">
-        <img id="back-dragon" src="assets/dragon_back.png" alt="hero-wars">
+{{--        <img id="back-dragon" src="assets/dragon_back.png" alt="hero-wars">--}}
+        <video id="video_back" playsinline loop muted poster="assets/video_back.png">
+            <source src="assets/back.mp4" type="video/mp4">
+        </video>
     </div>
     <div id="character">
         <div class="light-character">
-{{--            <svg width="492" height="882" viewBox="0 0 492 882" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-{{--                <g filter="url(#filter0_f_357:313)">--}}
-{{--                    <path d="M313 -127H185L100 782H392L313 -127Z" fill="white" fill-opacity="0.3"/>--}}
-{{--                </g>--}}
-{{--                <defs>--}}
-{{--                    <filter id="filter0_f_357:313" x="0" y="-227" width="492" height="1109" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">--}}
-{{--                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>--}}
-{{--                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>--}}
-{{--                        <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_357:313"/>--}}
-{{--                    </filter>--}}
-{{--                </defs>--}}
-{{--            </svg>--}}
         </div>
         <div class="txt-character">
             <p class="h2">Your 1st hero
@@ -79,12 +91,12 @@
             <form id="register">
                 <p class="p2">or use your Email address </p>
                 <div class="input-valid">
-                    <input class="entryfield mail" placeholder="E-mail"
+                    <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
                            name="mail">
                     <p>The email you entered is incorrect. Try again.</p>
                 </div>
                 <div class="input-valid">
-                    <input class="entryfield password-type password" type="password" placeholder="Password"
+                    <input class="entryfield password-type password" autocomplete="off" type="password" placeholder="Password"
                            name="password">
                     <p>Use 6-40 symbols, except spaces, <, >, ', "</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +109,7 @@
                     </svg>
                 </div>
                 <div class="input-valid">
-                    <input class="entryfield password-type password-confirm" type="password" placeholder="Password"
+                    <input class="entryfield password-type password-confirm" autocomplete="off" type="password" placeholder="Confirm Password"
                            name="password">
                     <p>The passwords entered do not match. Please re-enter your password.</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +125,7 @@
                     <label class="check-ico">
                         <input class="consent" type="checkbox" name="agreement" value="true"
                                autocomplete="off" required>
-                        <span class="d-flex align-items-center text-medium-16"></span>
+                        <span class="d-flex align-items-center"></span>
                     </label>
                     <p class="politic">By signing up, you agree to our
                         <a target="_blank" href="https://hero-wars.com/policy/terms/en">Terms of Service</a>,
@@ -127,14 +139,14 @@
             </form>
             <form id="login">
                 <div class="input-valid">
-                    <input class="entryfield mail" placeholder="E-mail"
+                    <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
                            name="mail">
                     <p>Field is required.</p>
                     <p class="sign-up">Couldn’t find an account associated with this email. Want to
 {{--                        <span class="close-modal">sing up</span>?</p>--}}
                 </div>
                 <div class="input-valid">
-                    <input class="entryfield password-type password" type="password" placeholder="Password"
+                    <input class="entryfield password-type password" autocomplete="off" type="password" placeholder="Password"
                            name="password">
                     <p>Use 6-40 symbols, except spaces, <, >, ', "</p>
                     <p>Your password is incorrect.</p>
@@ -156,7 +168,7 @@
             </form>
             <form id="reset">
                 <div class="input-valid">
-                    <input class="entryfield mail" placeholder="E-mail"
+                    <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
                            name="mail">
                     <p>Field is required.</p>
                 </div>
@@ -169,7 +181,7 @@
             <form id="updatepassword">
                 <p class="desc-modal">Enter your new password</p>
                 <div class="input-valid">
-                    <input class="entryfield password password-new" type="password" placeholder="Password"
+                    <input class="entryfield password password-new" autocomplete="off" type="password" placeholder="Password"
                            name="password">
                     <p>Use 6-40 symbols, except spaces, <, >, ', "</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +194,7 @@
                     </svg>
                 </div>
                 <div class="input-valid">
-                    <input class="entryfield password password-confirm" type="password" placeholder="Password"
+                    <input class="entryfield password password-confirm" autocomplete="off" type="password" placeholder="Password"
                            name="password">
                     <p>The passwords entered do not match. Please re-enter your password.</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -207,6 +219,6 @@
 
 </div>
 
-<script src="/js/app.js"></script>
+<script defer src="/js/app.js"></script>
 </body>
 </html>

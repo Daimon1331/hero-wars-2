@@ -134,6 +134,11 @@ button
         transition: .5s
         @media screen and (max-width: 700px)
             width: 218px
+    .entryfield:-webkit-autofill
+        -webkit-background-color: transparent!important
+        -webkit-box-shadow: 0 0 0 0 transparent inset
+        color: #915D24!important
+        -webkit-text-fill-color: #915D24!important
     .entryfield, .entryfield::placeholder
         font-family: 'RobotoCondensed-Bold', sans-serif
         font-size: 14px
@@ -324,7 +329,7 @@ button
             left: 90px
             min-height: 90vh
             height: 77vh
-            background: rgba(255, 255, 255, 0.3)
+            background: rgba(255, 255, 255, 0.5)
             filter: blur(100px)
             width: 50%
             @media screen and (max-width: 900px)
@@ -392,13 +397,18 @@ button
 #dragon
     position: absolute
     width: 100%
+    height: 100%
     top: 0
     left: 0
-    min-width: 160vh
-    @media screen and (max-width: 992px)
-        margin-left: -100px
-    @media screen and (max-width: 550px)
-        min-width: 230vh
+    //min-width: 160vh
+    //min-width: 1600px
+    //min-height: 1020px
+    //@media screen and (max-width: 1500px)
+    //    height: auto
+    //@media screen and (max-width: 992px)
+    //    margin-left: -100px
+    //@media screen and (max-width: 550px)
+    //    min-width: 230vh
     svg
         display: none
         //image
@@ -412,6 +422,14 @@ button
         //    padding-left: 100px
         //@media screen and (max-width: 992px)
         //    padding-left: 0
+    video
+        //display: none
+        height: 100%
+        width: 100%
+        object-fit: cover
+        object-position: left
+        @media screen and (max-width: 992px)
+            object-position: -285px
 #light-dragon
     position: absolute
     z-index: 5
@@ -439,17 +457,22 @@ button
         //min-height: 100vh
         top: 0
         left: 0
-        animation: square .8s linear infinite alternate
-        @keyframes square
+        animation: chest .8s linear infinite alternate
+        @keyframes chest
             0%
+                -webkit-transform: translate(-5px, 5px) rotate(-1deg)
                 transform: translate(-5px, 5px) rotate(-1deg)
             25%
+                -webkit-transform: translate(5px, 5px) rotate(1deg)
                 transform: translate(5px, 5px) rotate(1deg)
             50%
+                -webkit-transform: translate(-5px, -5px) rotate(-1deg)
                 transform: translate(-5px, -5px) rotate(-1deg)
             75%
+                -webkit-transform: translate(0px, 0px) rotate(1deg)
                 transform: translate(0px, 0px) rotate(1deg)
             100%
+                -webkit-transform: translate(5px, -5px) rotate(-1deg)
                 transform: translate(5px, -5px) rotate(-1deg)
         .box-text
             position: absolute
@@ -473,6 +496,24 @@ button
             //margin-left: -430px
             transform: translate(-50%, -50%)
             cursor: pointer
+            img
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                cursor: pointer
+                //width: 100%
+                //height: 100%
+                max-width: none
+                transition: .5s
+                opacity: 1
+                filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
+                margin-top: -37px
+                z-index: 1
+                @media screen and (max-width: 700px)
+                    width: 587px
+                    height: 336px
+                    margin-top: -17px
             svg
                 filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
             @media screen and (max-width: 700px)
@@ -484,9 +525,10 @@ button
             transform: translate(-50%, -50%)
             cursor: pointer
         #chest-stars
-            margin-top: -130px
+            display: none
+            margin-top: -40px
             position: absolute
-            width: 540px
+            width: 970px
             height: auto
             top: 50%
             left: 50%
@@ -494,7 +536,7 @@ button
             cursor: pointer
             @media screen and (max-width: 700px)
                 width: 360px
-                margin-top: -100px
+                margin-top: -20px
                 height: auto
 
 
@@ -524,6 +566,29 @@ button
         top: 10vh
 
 
+#container-txt
+    display: none
+    position: absolute
+    width: 0
+    height: 0
+    top: 50%
+    left: 50%
+    z-index: 7
+    .box-text
+        position: relative
+        //top: -190px
+        //left: -160px
+        top: -260px
+        left: -280px
+        @media screen and (max-width: 700px)
+            //top: -90px
+            //left: -80px
+            top: -130px
+            left: -150px
+            p:last-child
+                margin-left: -10px
+                @media screen and (max-width: 700px)
+                    margin-left: -6px
 
 
 
