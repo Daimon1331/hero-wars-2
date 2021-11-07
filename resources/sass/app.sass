@@ -184,7 +184,7 @@ button
     .password-button
         position: absolute
         right: 18px
-        top: 24px
+        top: 20px
         transform: translateY(-50%)
         transition: .5s
         opacity: 0
@@ -282,10 +282,10 @@ button
 
 #main
     min-height: 100vh
-    background: url("/assets/back.jpg")
-    background-position: 21%
-    background-repeat: no-repeat
-    background-size: cover
+    //background: url("/assets/back.jpg")
+    //background-position: 21%
+    //background-repeat: no-repeat
+    //background-size: cover
     padding: 70px 180px 90px 305px
     display: flex
     justify-content: space-evenly
@@ -310,6 +310,7 @@ button
         height: 755px
         z-index: 15
         min-width: 400px
+        transition: 1s
         @media screen and (max-width: 992px)
             top: -280px
             left: -330px
@@ -344,9 +345,16 @@ button
             @media screen and (max-width: 900px)
                 left: -10px
                 top: 105px
+            span
+                font-size: 45px
+                @media screen and (max-width: 900px)
+                    font-size: 25px
     #container-form
+        //overflow: hidden
+        //max-width: 444px
         margin-top: 156px
         display: none
+        transition: 5s
         position: relative
         z-index: 10
         border-radius: 18px
@@ -487,43 +495,40 @@ button
                 @media screen and (max-width: 700px)
                     margin-left: -6px
         #chest
-            position: absolute
             width: 660px
-            height: auto
-            top: 50%
-            left: 50%
-            //margin-top: -270px
-            //margin-left: -430px
-            transform: translate(-50%, -50%)
+            height: 600px
             cursor: pointer
             img
                 position: absolute
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
+                top: 0
+                left: 0
+                //transform: translate(-50%, -50%)
                 cursor: pointer
-                //width: 100%
+                width: 100%
                 //height: 100%
                 max-width: none
                 transition: .5s
                 opacity: 1
                 filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
-                margin-top: -37px
                 z-index: 1
-                @media screen and (max-width: 700px)
-                    width: 587px
-                    height: 336px
-                    margin-top: -17px
+            img:nth-of-type(1)
+                z-index: 4
+            img:nth-of-type(2)
+                z-index: 3
+                display: none
+            img:nth-of-type(3)
+                z-index: 2
+                display: none
+            img:last-of-type
+                display: none
+                z-index: 1
             svg
-                filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
+                position: relative
+                z-index: 15
+                //filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
             @media screen and (max-width: 700px)
                 width: 300px
-        #chest-glow
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
-            cursor: pointer
+                height: 270px
         #chest-stars
             display: none
             margin-top: -40px
@@ -534,6 +539,7 @@ button
             left: 50%
             transform: translate(-50%, -50%)
             cursor: pointer
+            z-index: 20
             @media screen and (max-width: 700px)
                 width: 360px
                 margin-top: -20px
@@ -567,7 +573,7 @@ button
 
 
 #container-txt
-    display: none
+    //display: none
     position: absolute
     width: 0
     height: 0
@@ -591,4 +597,10 @@ button
                     margin-left: -6px
 
 
-
+//#main
+//    #container-form.close-form
+//        max-width: 0
+//        padding: 0
+//        border: 0 solid transparent
+//        margin: 0
+//        max-height: 700px

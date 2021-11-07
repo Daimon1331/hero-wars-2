@@ -11528,7 +11528,7 @@ button {
 .input-valid .password-button {
   position: absolute;
   right: 18px;
-  top: 24px;
+  top: 20px;
   transform: translateY(-50%);
   transition: 0.5s;
   opacity: 0;
@@ -11652,10 +11652,6 @@ button {
 
 #main {
   min-height: 100vh;
-  background: url("/assets/back.jpg");
-  background-position: 21%;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 70px 180px 90px 305px;
   display: flex;
   justify-content: space-evenly;
@@ -11693,6 +11689,7 @@ button {
   height: 755px;
   z-index: 15;
   min-width: 400px;
+  transition: 1s;
 }
 @media screen and (max-width: 992px) {
   #main #character {
@@ -11748,9 +11745,18 @@ button {
     top: 105px;
   }
 }
+#main #character .txt-character span {
+  font-size: 45px;
+}
+@media screen and (max-width: 900px) {
+  #main #character .txt-character span {
+    font-size: 25px;
+  }
+}
 #main #container-form {
   margin-top: 156px;
   display: none;
+  transition: 5s;
   position: relative;
   z-index: 10;
   border-radius: 18px;
@@ -11927,48 +11933,46 @@ button {
   }
 }
 #container-chest #box-chest #chest {
-  position: absolute;
   width: 660px;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 600px;
   cursor: pointer;
 }
 #container-chest #box-chest #chest img {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   cursor: pointer;
+  width: 100%;
   max-width: none;
   transition: 0.5s;
   opacity: 1;
   filter: drop-shadow(0px 0px 80px #fbc635);
-  margin-top: -37px;
   z-index: 1;
 }
-@media screen and (max-width: 700px) {
-  #container-chest #box-chest #chest img {
-    width: 587px;
-    height: 336px;
-    margin-top: -17px;
-  }
+#container-chest #box-chest #chest img:nth-of-type(1) {
+  z-index: 4;
+}
+#container-chest #box-chest #chest img:nth-of-type(2) {
+  z-index: 3;
+  display: none;
+}
+#container-chest #box-chest #chest img:nth-of-type(3) {
+  z-index: 2;
+  display: none;
+}
+#container-chest #box-chest #chest img:last-of-type {
+  display: none;
+  z-index: 1;
 }
 #container-chest #box-chest #chest svg {
-  filter: drop-shadow(0px 0px 80px #fbc635);
+  position: relative;
+  z-index: 15;
 }
 @media screen and (max-width: 700px) {
   #container-chest #box-chest #chest {
     width: 300px;
+    height: 270px;
   }
-}
-#container-chest #box-chest #chest-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
 }
 #container-chest #box-chest #chest-stars {
   display: none;
@@ -11980,6 +11984,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  z-index: 20;
 }
 @media screen and (max-width: 700px) {
   #container-chest #box-chest #chest-stars {
@@ -12027,7 +12032,6 @@ button {
 }
 
 #container-txt {
-  display: none;
   position: absolute;
   width: 0;
   height: 0;

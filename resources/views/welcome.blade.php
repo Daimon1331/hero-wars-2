@@ -31,7 +31,6 @@
                 </filter>
             </defs>
         </svg>
-
     </div>
     <div id="container-txt">
         <div class="box-text">
@@ -41,17 +40,18 @@
     </div>
     <div id="container-chest">
         <div id="box-chest">
-            <div id="chest-glow"></div>
             <div id="chest">
-                <img src="assets/chest.png" alt="hero-wars">
+                <img id="step1" src="assets/step1.png" alt="hero-wars">
+                <img id="step2" src="assets/step2.png" alt="hero-wars">
+                <img id="step3" src="assets/step3.png" alt="hero-wars">
+                <img id="end" src="assets/end.png" alt="hero-wars">
             </div>
-            <div id="chest-stars">
-                <img src="assets/stars.png" alt="hero-wars">
-            </div>
+{{--            <div id="chest-stars">--}}
+{{--                <img src="assets/stars.png" alt="hero-wars">--}}
+{{--            </div>--}}
         </div>
     </div>
     <div id="dragon">
-{{--        <img id="back-dragon" src="assets/dragon_back.png" alt="hero-wars">--}}
         <video id="video_back" playsinline loop muted poster="assets/video_back.png">
             <source src="assets/back.mp4" type="video/mp4">
         </video>
@@ -60,7 +60,7 @@
         <div class="light-character">
         </div>
         <div class="txt-character">
-            <p class="h2">Your 1st hero
+            <p class="h2">Your <span>1st</span> hero
                 <br>is ready to </p>
             <h1 class="h1">fight!</h1>
         </div>
@@ -143,7 +143,6 @@
                            name="mail">
                     <p>Field is required.</p>
                     <p class="sign-up">Couldn’t find an account associated with this email. Want to
-{{--                        <span class="close-modal">sing up</span>?</p>--}}
                 </div>
                 <div class="input-valid">
                     <input class="entryfield password-type password" autocomplete="off" type="password" placeholder="Password"
