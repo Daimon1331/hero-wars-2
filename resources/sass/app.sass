@@ -61,12 +61,13 @@ button
 
 .h1
     font-family: 'Tobi-Regular', sans-serif
-    text-shadow: 0 4.61053px 4.61053px rgba(0, 0, 0, 0.25)
-    font-size: 72px
-    line-height: 84px
-    color: white
+    font-size: 80px
+    line-height: 60px
+    //background: linear-gradient(180deg, #FED258, #AA5902)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    -webkit-text-stroke: 2px rgba(104, 32, 7, 1)
     text-transform: uppercase
-    -webkit-text-stroke: 2px #852E17
     @media screen and (max-width: 900px)
         font-size: 24px
         line-height: 28px
@@ -74,11 +75,13 @@ button
 
 .h2
     font-family: 'Tobi-Regular', sans-serif
-    text-shadow: 0 4.61053px 4.61053px rgba(0, 0, 0, 0.25)
-    -webkit-text-stroke: 2px #852E17
-    font-size: 36px
+    background: linear-gradient(180deg, #FED258, #F2B219, #AA5902)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    -webkit-text-stroke: 2px rgba(104, 32, 7, 1)
+    font-size: 40px
     line-height: 42px
-    color: white
+    text-transform: uppercase
     @media screen and (max-width: 900px)
         font-size: 12px
         line-height: 14px
@@ -88,7 +91,7 @@ button
     font-family: 'Tobi-Regular', sans-serif
     font-size: 26px
     line-height: 30px
-    color: #FFCB3E
+    color: #422623
     -webkit-text-stroke: 1px #834E3C
     text-shadow: 0 2.2905px 2.2905px rgba(0, 0, 0, 0.4)
 
@@ -106,17 +109,19 @@ button
     color: #FFE5B5
 
 .p-open
-    font-family: 'Tobi-Regular', sans-serif
+    font-family: 'Tobi-Black', sans-serif
     font-size: 120px
-    line-height: 73px
-    color: white
-    -webkit-text-stroke: 3px  #CB9017
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4)
+    line-height: 96px
+    background: linear-gradient(180deg, #FED258, #F2B219, #AA5902)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    -webkit-text-stroke: 4px rgba(104, 32, 7, 1)
     white-space: pre-wrap
     letter-spacing: -3px
+    text-transform: uppercase
     @media screen and (max-width: 700px)
         font-size: 67px
-        line-height: 44px
+        line-height: 60px
 
 .input-valid
     position: relative
@@ -214,8 +219,8 @@ button
         width: 218px
     p, a
         font-family: 'NotoSans-Regular', sans-serif
-        font-size: 14px
-        line-height: 24px
+        font-size: 12px
+        line-height: 18px
     p
         color: #FFFAD6
     a
@@ -241,6 +246,10 @@ button
         border: 2px solid #FFD66D
         border-radius: 2px
         flex: 0 0 16px
+        transition: 1s
+    input.invalid-check+span:before
+        border: 2px solid #D32829
+        box-shadow: 0 0 3px #D32829
 .check-ico>input:checked+span::before
     background-image: url("/assets/checkicon.svg")
     background-repeat: no-repeat
@@ -248,6 +257,7 @@ button
     background-size: contain
     background-color: transparent
     border: none
+    box-shadow: none
 
 .hero-button
     z-index: 5
@@ -257,7 +267,7 @@ button
     background: transparent
     border: none
     p
-        padding: 27px 45px
+        padding: 13px 45px
         position: relative
         z-index: 5
     img
@@ -269,6 +279,10 @@ button
         filter: drop-shadow(0px 0px 8px rgba(251, 198, 53, .2))
         transition: .5s
 .hero-button:hover
+    p
+        background: linear-gradient(180deg, #422623, #E12100)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
     img
         filter: drop-shadow(0px 0px 8px rgba(251, 198, 53, 1))
 
@@ -292,8 +306,10 @@ button
     align-items: center
     position: relative
     overflow: hidden
+    @media screen and (max-height: 950px)
+        padding: 10px 180px 35px 305px
     @media screen and (max-width: 1500px)
-        padding: 50px 100px 50px 150px
+        padding: 10px 100px 35px 150px
     @media screen and (max-width: 992px)
         padding: 70px 80px
         flex-direction: column-reverse
@@ -303,6 +319,7 @@ button
     @media screen and (max-width: 700px)
         padding: 20px
         justify-content: flex-end
+
     #character
         display: none
         position: relative
@@ -311,6 +328,8 @@ button
         z-index: 15
         min-width: 400px
         transition: 1s
+        @media screen and (max-height: 950px)
+            height: 710px
         @media screen and (max-width: 992px)
             top: -280px
             left: -330px
@@ -345,16 +364,14 @@ button
             @media screen and (max-width: 900px)
                 left: -10px
                 top: 105px
+            p
+                font-family: 'Tobi-Black', sans-serif
+                letter-spacing: -2px
             span
-                font-size: 45px
-                @media screen and (max-width: 900px)
-                    font-size: 25px
+                font-family: 'Tobi-Black', sans-serif
     #container-form
-        //overflow: hidden
-        //max-width: 444px
-        margin-top: 156px
-        display: none
-        transition: 5s
+        margin-top: 126px
+        transition: 1s
         position: relative
         z-index: 10
         border-radius: 18px
@@ -363,14 +380,19 @@ button
         background: rgba(17, 17, 17, 0.8)
         padding: 0 60px 40px
         text-align: center
+        transform: scale(1)
+        margin-right: 0
+        opacity: 1
+        @media screen and (max-height: 768px)
+            padding: 0 60px 20px
         @media screen and (max-width: 550px)
             width: 100%
             padding: 0 20px 40px
             margin-top: 125px
         .logo
-            margin: -156px auto 12px
-            width: 320px
-            height: 287px
+            margin: -126px auto 12px
+            width: 258px
+            height: 230px
             @media screen and (max-width: 700px)
                 width: 250px
                 height: 230px
@@ -436,8 +458,6 @@ button
         width: 100%
         object-fit: cover
         object-position: left
-        @media screen and (max-width: 992px)
-            object-position: -285px
 #light-dragon
     position: absolute
     z-index: 5
@@ -447,6 +467,8 @@ button
     height: 100%
     top: 0
     left: 0
+    svg
+        max-width: none
 
 #container-chest
     //display: none
@@ -465,23 +487,23 @@ button
         //min-height: 100vh
         top: 0
         left: 0
-        animation: chest .8s linear infinite alternate
-        @keyframes chest
-            0%
-                -webkit-transform: translate(-5px, 5px) rotate(-1deg)
-                transform: translate(-5px, 5px) rotate(-1deg)
-            25%
-                -webkit-transform: translate(5px, 5px) rotate(1deg)
-                transform: translate(5px, 5px) rotate(1deg)
-            50%
-                -webkit-transform: translate(-5px, -5px) rotate(-1deg)
-                transform: translate(-5px, -5px) rotate(-1deg)
-            75%
-                -webkit-transform: translate(0px, 0px) rotate(1deg)
-                transform: translate(0px, 0px) rotate(1deg)
-            100%
-                -webkit-transform: translate(5px, -5px) rotate(-1deg)
-                transform: translate(5px, -5px) rotate(-1deg)
+        //animation: chest .8s linear infinite alternate
+        //@keyframes chest
+        //    0%
+        //        -webkit-transform: translate(-5px, 5px) rotate(-1deg)
+        //        transform: translate(-5px, 5px) rotate(-1deg)
+        //    25%
+        //        -webkit-transform: translate(5px, 5px) rotate(1deg)
+        //        transform: translate(5px, 5px) rotate(1deg)
+        //    50%
+        //        -webkit-transform: translate(-5px, -5px) rotate(-1deg)
+        //        transform: translate(-5px, -5px) rotate(-1deg)
+        //    75%
+        //        -webkit-transform: translate(0px, 0px) rotate(1deg)
+        //        transform: translate(0px, 0px) rotate(1deg)
+        //    100%
+        //        -webkit-transform: translate(5px, -5px) rotate(-1deg)
+        //        transform: translate(5px, -5px) rotate(-1deg)
         .box-text
             position: absolute
             z-index: 1
@@ -498,6 +520,7 @@ button
             width: 660px
             height: 600px
             cursor: pointer
+            filter: drop-shadow(0px 0px 15px rgba(251, 198, 53, 1))
             img
                 position: absolute
                 top: 0
@@ -509,7 +532,6 @@ button
                 max-width: none
                 transition: .5s
                 opacity: 1
-                filter: drop-shadow(0px 0px 80px rgba(251, 198, 53, 1))
                 z-index: 1
             img:nth-of-type(1)
                 z-index: 4
@@ -582,9 +604,8 @@ button
     z-index: 7
     .box-text
         position: relative
-        //top: -190px
-        //left: -160px
-        top: -260px
+        width: 280px
+        top: -310px
         left: -280px
         @media screen and (max-width: 700px)
             //top: -90px
@@ -597,10 +618,14 @@ button
                     margin-left: -6px
 
 
-//#main
-//    #container-form.close-form
-//        max-width: 0
-//        padding: 0
-//        border: 0 solid transparent
-//        margin: 0
-//        max-height: 700px
+#main
+    #container-form.close-form
+        transition: none
+        margin-right: -500px
+        transform: scale(0)
+        opacity: 0
+        @media screen and (max-width: 992px)
+            margin-top: -630px
+            margin-right: 0
+
+

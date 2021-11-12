@@ -5256,7 +5256,7 @@ function animationplay() {
             $('#character').css('display', 'block').addClass("anim-character");
             setTimeout(function () {
               $('#character').removeClass("anim-character");
-              $('#container-form').css('display', 'block');
+              $('#container-form').removeClass("close-form");
             }, 3000);
           };
         }
@@ -5289,7 +5289,7 @@ setTimeout(function () {
       $('#character').css('display', 'block').addClass("anim-character");
       setTimeout(function () {
         $('#character').removeClass("anim-character");
-        $('#container-form').css('display', 'block');
+        $('#container-form').removeClass("close-form");
       }, 3000);
     };
   } else {
@@ -5312,7 +5312,7 @@ setTimeout(function () {
         $('#character').css('display', 'block').addClass("anim-character");
         setTimeout(function () {
           $('#character').removeClass("anim-character");
-          $('#container-form').css('display', 'block');
+          $('#container-form').removeClass("close-form");
         }, 3000);
       };
     } else {
@@ -5331,7 +5331,7 @@ setTimeout(function () {
           $('#character').css('display', 'block').addClass("anim-character");
           setTimeout(function () {
             $('#character').removeClass("anim-character");
-            $('#container-form').css('display', 'block');
+            $('#container-form').removeClass("close-form");
           }, 3000);
         };
       }
@@ -5344,19 +5344,18 @@ var animation_character = lottie_web__WEBPACK_IMPORTED_MODULE_0___default().load
   renderer: 'svg',
   loop: true,
   autoplay: true
-});
-var consent = document.getElementsByClassName('consent');
-$(consent).click(function () {
-  for (var i = 0; i < consent.length; i++) {
-    var form = consent[i].closest("form");
+}); // var consent = document.getElementsByClassName('consent');
+// $(consent).click(function () {
+//     for (var i = 0; i < consent.length; i++) {
+//         var form = consent[i].closest("form");
+//         if (consent[i].checked) {
+//             form.querySelector("button").disabled = '';
+//         } else {
+//             form.querySelector("button").disabled = 'disabled';
+//         }
+//     }
+// });
 
-    if (consent[i].checked) {
-      form.querySelector("button").disabled = '';
-    } else {
-      form.querySelector("button").disabled = 'disabled';
-    }
-  }
-});
 $(".password-button").click(function () {
   var passwordvisible = this.closest('.input-valid').querySelector(".password-type");
 
@@ -5387,20 +5386,29 @@ $("#register .hero-button").click(function () {
       if (password_confirm.value === password.value) {
         $(password_confirm).addClass("valid");
         $(password_confirm).removeClass("invalid");
-        var formData = new FormData(form);
-        $.ajax({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          url: '/register',
-          data: formData,
-          type: 'POST',
-          contentType: false,
-          processData: false,
-          success: function success(data) {},
-          error: function error(data) {}
-        });
-        return false;
+        var checkControl = form.querySelector('.consent');
+
+        if (checkControl.checked) {
+          var formData = new FormData(form);
+          $.ajax({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/register',
+            data: formData,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            success: function success(data) {},
+            error: function error(data) {}
+          });
+          return false;
+        } else {
+          $(checkControl).addClass("invalid-check");
+          setTimeout(function () {
+            $(checkControl).removeClass("invalid-check");
+          }, 1000);
+        }
       } else {
         $(password_confirm).addClass("invalid");
         $(password_confirm).removeClass("valid");
@@ -5425,13 +5433,12 @@ $("#login .hero-button").click(function () {
   } else {
     // if (mail.value.match(/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/)) {
     $(mail).addClass("valid");
-    $(mail).removeClass("invalid");
+    $(mail).removeClass("invalid"); // if (password.value === "") {
+    //     $(password).addClass("invalid");
+    //     $(password).removeClass("valid");
+    //     } else {
 
-    if (password.value === "") {
-      $(password).addClass("invalid");
-      $(password).removeClass("valid");
-    } else {
-      //     if (password.value.match(/^[^\s<>'"]{6,40}$/)) {
+    if (password.value.match(/^[^\s<>'"]{6,40}$/)) {
       $(password).addClass("valid");
       $(password).removeClass("invalid");
       var formData = new FormData(form);
@@ -5445,7 +5452,9 @@ $("#login .hero-button").click(function () {
         contentType: false,
         processData: false,
         success: function success(data) {
-          if (data == '{"errorCode":3001,"message":"User not found"}') {
+          var response = JSON.parse(data);
+
+          if (response.error == 3001 || response.error == 5000) {
             $(mail).addClass("invalid-response");
             $(mail).removeClass("valid");
           } else {}
@@ -5457,10 +5466,10 @@ $("#login .hero-button").click(function () {
         },
         error: function error(data) {}
       });
-      return false; // } else {
-      //     $(password).addClass("invalid");
-      //     $(password).removeClass("valid");
-      // }
+      return false;
+    } else {
+      $(password).addClass("invalid");
+      $(password).removeClass("valid"); // }
       // }
       // } else {
       //     $(mail).addClass("invalid");
@@ -5481,7 +5490,7 @@ $("#reset .hero-button").click(function () {
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
-      url: '',
+      url: '/check_exist_user',
       data: formData,
       type: 'POST',
       contentType: false,

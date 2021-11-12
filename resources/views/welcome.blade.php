@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <script>
         window.ASSET_PATH = "/assets"
     </script>
@@ -40,7 +40,7 @@
     </div>
     <div id="container-chest">
         <div id="box-chest">
-            <div id="chest">
+            <div id="chest" onmousedown="return false" onselectstart="return false">
                 <img id="step1" src="assets/step1.png" alt="hero-wars">
                 <img id="step2" src="assets/step2.png" alt="hero-wars">
                 <img id="step3" src="assets/step3.png" alt="hero-wars">
@@ -56,16 +56,16 @@
             <source src="assets/back.mp4" type="video/mp4">
         </video>
     </div>
-    <div id="character">
+    <div id="character" class="anim-character">
         <div class="light-character">
         </div>
         <div class="txt-character">
-            <p class="h2">Your <span>1st</span> hero
-                <br>is ready to </p>
-            <h1 class="h1">fight!</h1>
+            <p class="h2">Your 1st hero
+                <br>is ready to
+            <br><span class="h1">fight!</span></p>
         </div>
     </div>
-    <div id="container-form">
+    <div id="container-form" class="close-form">
             <div class="logo">
                 <img src="assets/logo.gif" alt="hero-wars">
             </div>
@@ -92,7 +92,7 @@
                 <p class="p2">or use your Email address </p>
                 <div class="input-valid">
                     <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
-                           name="mail">
+                           name="email">
                     <p>The email you entered is incorrect. Try again.</p>
                 </div>
                 <div class="input-valid">
@@ -110,7 +110,7 @@
                 </div>
                 <div class="input-valid">
                     <input class="entryfield password-type password-confirm" autocomplete="off" type="password" placeholder="Confirm Password"
-                           name="password">
+                           >
                     <p>The passwords entered do not match. Please re-enter your password.</p>
                     <svg class="password-button password-visible view" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.185 18.899L13.764 16.4765C12.8278 16.8112 11.8157 16.8732 10.8456 16.6553C9.87554 16.4373 8.98729 15.9483 8.28423 15.2453C7.58117 14.5422 7.09221 13.654 6.87424 12.6839C6.65628 11.7138 6.71827 10.7017 7.053 9.76551L3.963 6.67551C1.407 8.94801 0 11.531 0 11.531C0 11.531 4.5 19.781 12 19.781C13.4406 19.776 14.8649 19.4758 16.185 18.899ZM7.815 4.16301C9.13508 3.58614 10.5594 3.28597 12 3.28101C19.5 3.28101 24 11.531 24 11.531C24 11.531 22.5915 14.1125 20.0385 16.388L16.9455 13.295C17.2802 12.3588 17.3422 11.3467 17.1243 10.3766C16.9063 9.40655 16.4173 8.51829 15.7143 7.81524C15.0112 7.11218 14.123 6.62322 13.1529 6.40525C12.1828 6.18728 11.1707 6.24927 10.2345 6.58401L7.815 4.16451V4.16301Z" fill="#FFE5B5" fill-opacity="0.2"/>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="d-flex box-check-ico">
                     <label class="check-ico">
-                        <input class="consent" type="checkbox" name="agreement" value="true"
+                        <input class="consent" type="checkbox" checked name="agreement" value="true"
                                autocomplete="off" required>
                         <span class="d-flex align-items-center"></span>
                     </label>
@@ -131,8 +131,8 @@
                         <a target="_blank" href="https://hero-wars.com/policy/terms/en">Terms of Service</a>,
                         <a target="_blank" href="https://hero-wars.com/policy/privacy/en">Privacy and Cookie Policy</a>.</p>
                 </div>
-                <button type="button" class="hero-button" disabled>
-                    <p class="h3">Play free</p>
+                <button type="button" class="hero-button">
+                    <p class="h3">Play FREE!</p>
                     <img src="assets/back_button.png" alt="hero-wars">
                 </button>
                 <p class="d-flex already-account">Already have an account? <span id="open-login">Log In</span></p>
@@ -140,7 +140,7 @@
             <form id="login">
                 <div class="input-valid">
                     <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
-                           name="mail">
+                           name="email">
                     <p>Field is required.</p>
                     <p class="sign-up">Couldn’t find an account associated with this email. Want to
                 </div>
@@ -160,7 +160,7 @@
                 </div>
                 <p class="forgot-password">Forgot password?</p>
                 <button type="button" class="hero-button">
-                    <p class="h3">Play free</p>
+                    <p class="h3">Play FREE!</p>
                     <img src="assets/back_button.png" alt="hero-wars">
                 </button>
                 <p class="d-flex already-account">Don't have an account? <span class="open-register">Register now</span></p>
@@ -168,7 +168,7 @@
             <form id="reset">
                 <div class="input-valid">
                     <input class="entryfield mail" autocomplete="off" placeholder="E-mail"
-                           name="mail">
+                           name="login">
                     <p>Field is required.</p>
                 </div>
                 <button type="button" class="hero-button">
